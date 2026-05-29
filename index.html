@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UEFA Champions League Final Predictor - Arsenal vs PSG</title>
+  <meta name="description" content="AI and Machine Learning-powered prediction engine for the UEFA Champions League Final between Arsenal and Paris Saint-Germain. Using KNN, K-Means, and Random Forest models.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="ucl-navbar">
+    <a href="#" class="nav-brand">
+      <div class="ucl-icon">★</div>
+      <span>UCL Predictor</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#hero" class="active">Matchup</a></li>
+      <li><a href="#predictions">ML Models</a></li>
+      <li><a href="#stats">Statistics</a></li>
+      <li><a href="#squads">Squad Values</a></li>
+      <li><a href="#chatbot">AI Assistant</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO & MAIN PREDICTOR -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <img src="assets/stadium.png" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=1200&auto=format&fit=crop';" alt="Champions League Stadium">
+    </div>
+    
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="pulse"></span>
+        UCL Final Match Simulator
+      </div>
+      <h1>Arsenal vs PSG</h1>
+      <p>A statistical forecasting system using K-Nearest Neighbors, K-Means Clustering, SVM, and Random Forest models trained on historical data and current form.</p>
+
+      <!-- MATCHUP CARD -->
+      <div class="matchup-card" id="matchup">
+        <div class="matchup-teams">
+          <!-- Arsenal -->
+          <div class="team">
+            <img src="assets/arsenal.png" onerror="this.onerror=null; this.src='https://upload.wikimedia.org/wikipedia/en/5/53/Arsenal_FC.svg';" alt="Arsenal Logo" class="team-logo">
+            <h2 class="team-name arsenal">Arsenal</h2>
+            <div class="team-league">Premier League</div>
+          </div>
+
+          <!-- VS -->
+          <div class="vs-badge">
+            <div class="vs-text">VS</div>
+            <div class="vs-date">2026 UCL Final</div>
+          </div>
+
+          <!-- PSG -->
+          <div class="team">
+            <img src="assets/psg.png" onerror="this.onerror=null; this.src='https://upload.wikimedia.org/wikipedia/en/a/a7/Paris_Saint-Germain_F.C..svg';" alt="PSG Logo" class="team-logo">
+            <h2 class="team-name psg">PSG</h2>
+            <div class="team-league">Ligue 1</div>
+          </div>
+        </div>
+
+        <!-- Prediction Panel -->
+        <div class="prediction-display">
+          <div class="prediction-label">Ensemble Meta-Model Prediction</div>
+          <div class="prediction-score">
+            <span class="score-num home" id="home-score">?</span>
+            <span class="score-separator">-</span>
+            <span class="score-num away" id="away-score">?</span>
+          </div>
+          <div class="confidence-bar">
+            <div class="confidence-label">Prediction Confidence: <span id="confidence-value">0%</span></div>
+            <div class="confidence-track">
+              <div class="confidence-fill" id="confidence-fill"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Action Button -->
+        <button class="predict-btn" id="predict-btn" onclick="runPrediction()">
+          <span class="btn-text">Run ML Prediction</span>
+          <span class="spinner"></span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- STADIUM HERO IMAGE CALLOUT -->
+  <section class="stadium-section">
+    <div class="stadium-image-wrapper">
+      <img src="assets/stadium.png" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?q=80&w=1200&auto=format&fit=crop';" alt="Champions League Stadium at night">
+      <div class="stadium-overlay">
+        <h2 class="stadium-title">Puskás Aréna, Budapest</h2>
+        <p class="stadium-info">Neutral Venue • Capacity: 67,215 • Host of the 2026 UEFA Champions League Final</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ML MODELS GRID -->
+  <section class="section" id="predictions">
+    <div class="section-header animate-in">
+      <div class="section-tag">Machine Learning Engine</div>
+      <h2 class="section-title">Constituent Models</h2>
+      <p class="section-subtitle">How different machine learning algorithms interpret the parameters to forecast the outcome.</p>
+    </div>
+    
+    <div class="models-grid" id="models-grid">
+      <!-- KNN -->
+      <div class="model-card animate-in">
+        <div class="model-icon knn">🔍</div>
+        <h3 class="model-name">K-Nearest Neighbors</h3>
+        <p class="model-desc">Finds the most similar historical match scenarios using distance-based voting with K=5 neighbors.</p>
+        <div class="model-prediction">
+          <span class="model-score">? - ?</span>
+          <span class="model-confidence">0% conf.</span>
+        </div>
+      </div>
+      <!-- K-Means -->
+      <div class="model-card animate-in">
+        <div class="model-icon kmeans">🎯</div>
+        <h3 class="model-name">K-Means Clustering</h3>
+        <p class="model-desc">Groups match profiles into clusters and assigns this match to the most similar performance cluster.</p>
+        <div class="model-prediction">
+          <span class="model-score">? - ?</span>
+          <span class="model-confidence">0% conf.</span>
+        </div>
+      </div>
+      <!-- Linear Regression -->
+      <div class="model-card animate-in">
+        <div class="model-icon regression">📈</div>
+        <h3 class="model-name">Linear Regression</h3>
+        <p class="model-desc">Fits a linear model using win rate, xG, possession, and form as predictors for goals.</p>
+        <div class="model-prediction">
+          <span class="model-score">? - ?</span>
+          <span class="model-confidence">0% conf.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Win Probability Bar -->
+    <div class="probability-section animate-in" id="win-probability">
+      <div class="probability-header">
+        <span style="color: var(--arsenal-red)">Arsenal Win Probability (<span id="prob-arsenal-val">50%</span>)</span>
+        <span style="color: var(--psg-blue)">PSG Win Probability (<span id="prob-psg-val">50%</span>)</span>
+      </div>
+      <div class="probability-bar">
+        <div class="prob-segment prob-arsenal" id="prob-arsenal" style="width: 40%">40%</div>
+        <div class="prob-segment prob-draw" id="prob-draw" style="width: 20%">20%</div>
+        <div class="prob-segment prob-psg" id="prob-psg" style="width: 40%">40%</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RECENT FORM & H2H STATS -->
+  <section class="section" id="stats" style="background-color: var(--gray-50); border-top: 1px solid var(--gray-200); border-bottom: 1px solid var(--gray-200); max-width: 100%;">
+    <div style="max-width: 1200px; margin: 0 auto;">
+      <div class="section-header animate-in">
+        <div class="section-tag">Historical Context</div>
+        <h2 class="section-title">Head to Head & Recent Form</h2>
+        <p class="section-subtitle">A look at recent performances and historical matchups between the two European powerhouses.</p>
+      </div>
+
+      <div class="form-grid animate-in" style="margin-bottom: 48px;">
+        <!-- Arsenal Form -->
+        <div class="form-team" id="arsenal-form-card">
+          <h3 class="form-team-name" style="color: var(--arsenal-red)">🔴 Arsenal Form</h3>
+          <div id="arsenal-form">Loading form...</div>
+        </div>
+        <!-- PSG Form -->
+        <div class="form-team" id="psg-form-card">
+          <h3 class="form-team-name" style="color: var(--psg-blue)">🔵 PSG Form</h3>
+          <div id="psg-form">Loading form...</div>
+        </div>
+      </div>
+
+      <div class="animate-in">
+        <h3 style="font-family: 'Outfit', sans-serif; font-size: 1.3rem; margin-bottom: 16px; text-align: center;">Direct H2H History</h3>
+        <table class="history-table" id="h2h-table">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Competition</th>
+              <th>Venue</th>
+              <th>Score</th>
+              <th>Outcome</th>
+            </tr>
+          </thead>
+          <tbody id="history-tbody">
+            <!-- Data will be populated via JS -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLAYER VALUES COMPARISON -->
+  <section class="section" id="squads">
+    <div class="section-header animate-in">
+      <div class="section-tag">Financial Power & Value</div>
+      <h2 class="section-title">Squad Star Values</h2>
+      <p class="section-subtitle">Comparing the market value and stats of key players from both lineups.</p>
+    </div>
+
+    <div class="players-comparison animate-in" id="players-list">
+      <div class="players-team" id="arsenal-players-card">
+        <div class="players-team-header arsenal-header">
+          <img src="assets/arsenal.png" onerror="this.onerror=null; this.src='https://upload.wikimedia.org/wikipedia/en/5/53/Arsenal_FC.svg';" alt="Arsenal Logo">
+          <h3>Arsenal Key Players</h3>
+        </div>
+        <div id="arsenal-players">
+          <!-- Filled by JS -->
+        </div>
+      </div>
+
+      <div class="players-team" id="psg-players-card">
+        <div class="players-team-header psg-header">
+          <img src="assets/psg.png" onerror="this.onerror=null; this.src='https://upload.wikimedia.org/wikipedia/en/a/a7/Paris_Saint-Germain_F.C..svg';" alt="PSG Logo">
+          <h3>PSG Key Players</h3>
+        </div>
+        <div id="psg-players">
+          <!-- Filled by JS -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHATBOT ASSISTANT -->
+  <section class="section chatbot-section" id="chatbot" style="max-width: 100%;">
+    <div style="max-width: 1200px; margin: 0 auto;">
+      <div class="section-header animate-in">
+        <div class="section-tag">AI Companion</div>
+        <h2 class="section-title">Interactive AI Analyst</h2>
+        <p class="section-subtitle">Chat with our AI bot to discuss the models, player statistics, historical results, or prediction details.</p>
+      </div>
+
+      <div class="chatbot-container animate-in">
+        <div class="chatbot-header">
+          <div class="chatbot-avatar">🤖</div>
+          <div>
+            <div class="chatbot-title">UCL Predictor Assistant</div>
+            <div class="chatbot-status">Active • Ready to Analyze</div>
+          </div>
+        </div>
+
+        <div class="chat-messages" id="chat-messages">
+          <!-- Populated by JS -->
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="quick-questions">
+          <button class="quick-q">What is the predicted score?</button>
+          <button class="quick-q">Explain the KNN model</button>
+          <button class="quick-q">Who is the most valuable player?</button>
+          <button class="quick-q">Compare the teams' forms</button>
+        </div>
+
+        <div class="chat-input-area">
+          <input type="text" class="chat-input" id="chat-input" placeholder="Ask about prediction, KNN model, player values...">
+          <button class="chat-send" id="chat-send">➔</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-brand">UEFA Champions League Final Predictor</div>
+    <p>Machine Learning Forecasting System • Built for Educational & Simulation Purposes</p>
+    <p style="margin-top: 12px; font-size: 0.75rem; opacity: 0.5;">© 2026 UCL Predictor Engine. All rights reserved.</p>
+  </footer>
+
+  <!-- Core JavaScript files -->
+  <script src="data.js"></script>
+  <script src="ml-engine.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
